@@ -34,13 +34,13 @@ namespace ORM.Controllers
         }
 
         [HttpGet]
-        [Route("GetListaProductosMayoresA")]
-        public async Task<List<Producto>> GetListaProductosMayoresA(double valor)
+        [Route("GetListaProductosPrecio")]
+        public async Task<List<Producto>> GetListaProductosPrecio(double valor)
         {
             var respuesta = new List<Producto>();
             try
             {
-                respuesta = await _pproducto.GetListaProductosMayoresA(valor);
+                respuesta = await _pproducto.GetListaProductosPrecio(valor);
             }
             catch (Exception)
             {

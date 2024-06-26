@@ -33,7 +33,7 @@ namespace ORM.Services
 
             return respuesta;
         }
-        public async Task<List<Producto>> GetListaProductosMayoresA(double valor)
+        public async Task<List<Producto>> GetListaProductosPrecio(double valor)
         {
             var respuesta = new List<Producto>();
             try
