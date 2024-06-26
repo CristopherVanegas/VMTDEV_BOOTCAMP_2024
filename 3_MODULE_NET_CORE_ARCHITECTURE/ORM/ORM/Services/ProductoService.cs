@@ -33,5 +33,27 @@ namespace ORM.Services
 
             return respuesta;
         }
+        public async Task<List<Producto>> GetListaProductosMayoresA(double valor)
+        {
+            var respuesta = new List<Producto>();
+            try
+            {
+                if (valor == 0)
+                {
+                    respuesta = await _context.Productos.ToListAsync();
+                }
+                else
+                {
+                    respuesta = await _context.Productos.Where(x => x.Precio.Equals(valor)).ToListAsync();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return respuesta;
+        }
     }
 }

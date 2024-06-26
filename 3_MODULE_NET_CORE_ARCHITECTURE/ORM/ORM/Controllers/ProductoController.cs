@@ -32,5 +32,23 @@ namespace ORM.Controllers
 
             return respuesta;
         }
+
+        [HttpGet]
+        [Route("GetListaProductosMayoresA")]
+        public async Task<List<Producto>> GetListaProductosMayoresA(double valor)
+        {
+            var respuesta = new List<Producto>();
+            try
+            {
+                respuesta = await _pproducto.GetListaProductosMayoresA(valor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return respuesta;
+        }
     }
 }
