@@ -1,4 +1,6 @@
-﻿using EjemploEntity.Models;
+﻿using EjemploEntity.DTOs;
+using EjemploEntity.Models;
+using Newtonsoft.Json;
 
 namespace EjemploEntity.Utilitarios
 {
@@ -15,8 +17,10 @@ namespace EjemploEntity.Utilitarios
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
+                var json = await response.Content.ReadAsStringAsync();
+
                 respuesta.Cod = "000";
-                respuesta.Data = await response.Content.ReadAsStringAsync();
+                respuesta.Data = JsonConvert.DeserializeObject<PokeApiDto>(json);
                 respuesta.Mensaje = "Se consumio correcto";
             }
             catch (Exception ex)
