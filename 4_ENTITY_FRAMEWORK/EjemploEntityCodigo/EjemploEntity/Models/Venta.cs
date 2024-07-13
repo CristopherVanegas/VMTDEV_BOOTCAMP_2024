@@ -23,9 +23,9 @@ public partial class Venta
 
     public double? SucursalId { get; set; }
 
-    public string? CajaId { get; set; }
+    public int CajaId { get; set; }
 
-    public string? VendedorId { get; set; }
+    public int VendedorId { get; set; }
 
     public double? Precio { get; set; }
 
