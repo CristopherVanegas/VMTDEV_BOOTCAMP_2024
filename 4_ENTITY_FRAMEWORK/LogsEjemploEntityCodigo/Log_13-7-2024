@@ -1,0 +1,1 @@
+Se presento una novedad en la clase: ChuckNorrisApi, en el metodo: GetChuckNorrisJokesApi, con el siguiente error: An invalid request URI was provided. Either the request URI must be an absolute URI or BaseAddress must be set.
