@@ -2,9 +2,7 @@
 using EjemploEntity.Interface;
 using EjemploEntity.Models;
 using EjemploEntity.Utilitarios;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EjemploEntity.Utilitarios;
 
 namespace EjemploEntity.Services
 {
@@ -96,7 +94,7 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                Log.LogErrorMetodos("GetVentaCliente", ex.Message);
+                Log.LogErrorMetodos("VentaServices", "GetVentaCliente", ex.Message);
             }
             return respuesta;
         }
@@ -120,7 +118,7 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error:  {ex.Message}"; ;
+                Log.LogErrorMetodos("VentaServices", "PostVenta", ex.Message);
             }
             return respuesta;
         }
@@ -158,7 +156,7 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error:  {ex.Message}";
+                Log.LogErrorMetodos("VentaServices", "GetVenta", ex.Message);
             }
             return respuesta;
         }

@@ -1,4 +1,5 @@
-﻿using ORM.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using ORM.Models;
 
 namespace ORM.Interface
 {
@@ -6,5 +7,7 @@ namespace ORM.Interface
     {
         Task<List<Producto>> GetListaProductos(int productoID);
         Task<List<Producto>> GetListaProductosPrecio(double valor);
+        Task<Respuesta> PostProducto(Producto producto);
+        Task<Respuesta> PutProducto(Producto producto);
     }
 }

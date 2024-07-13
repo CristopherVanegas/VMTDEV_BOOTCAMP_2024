@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interface;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,6 +10,7 @@ namespace EjemploEntity.Controllers
     public class VentaController : Controller
     {
         private readonly IVentas _ventas;
+        private ControlError Log = new ControlError();
 
         public VentaController(IVentas ventas)
         {
@@ -24,10 +26,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.GetVentaCliente(numFact, fecha, vendedor, precio, clienteId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("VentaController", "GetVentaCliente", ex.Message);
             }
             return respuesta;
         }
@@ -41,10 +43,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.PostVenta(venta);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("VentaController", "PostVenta", ex.Message);
             }
             return respuesta;
         }
@@ -75,10 +77,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _ventas.GetVenta(); // llama al metodo de Interfaz venta
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("VentaController", "GetVenta", ex.Message);
             }
             return respuesta;
         }

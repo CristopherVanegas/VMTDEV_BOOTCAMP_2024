@@ -1,15 +1,14 @@
-﻿using EjemploEntity.Interface;
-using EjemploEntity.Models;
-using EjemploEntity.Utilitarios;
+﻿
 using Microsoft.EntityFrameworkCore;
+using ORM.Interface;
+using ORM.Models;
 
-namespace EjemploEntity.Services
+namespace ORM.Services
 {
     public class CatalogoService : ICatalogo
     {
-        //INYECCION DE DEPENDENCIA
+        // Inyeccion de dependencia
         private readonly VentasContext _context;
-        private ControlError Log = new ControlError();
 
         public CatalogoService(VentasContext context)
         {
@@ -23,12 +22,12 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Data = await _context.Categoria.ToListAsync();
-                respuesta.Mensaje = "Se inserto correctamente";
+                respuesta.Mensaje = "Ok";
             }
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoService", "GetCategoria", ex.Message);
+                respuesta.Mensaje = $"Me a presentado una novedad en el Metodo: GetCategoria, Error: {ex.Message}";
             }
             return respuesta;
         }
@@ -40,12 +39,12 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Data = await _context.Marcas.ToListAsync();
-                respuesta.Mensaje = "Se inserto correctamente";
+                respuesta.Mensaje = "Ok";
             }
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoService", "GetMarca", ex.Message);
+                respuesta.Mensaje = $"Me a presentado una novedad en el Metodo: GetCategoria, Error: {ex.Message}";
             }
             return respuesta;
         }
@@ -57,13 +56,12 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Data = await _context.Modelos.ToListAsync();
-                respuesta.Mensaje = "Se inserto correctamente";
+                respuesta.Mensaje = "Ok";
             }
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoService", "GetModelo", ex.Message);
-                throw;
+                respuesta.Mensaje = $"Me a presentado una novedad en el Metodo: GetCategoria, Error: {ex.Message}";
             }
             return respuesta;
         }
@@ -75,12 +73,12 @@ namespace EjemploEntity.Services
             {
                 respuesta.Cod = "000";
                 respuesta.Data = await _context.Sucursals.ToListAsync();
-                respuesta.Mensaje = "Se inserto correctamente";
+                respuesta.Mensaje = "Ok";
             }
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoService", "GetSucursal", ex.Message);
+                respuesta.Mensaje = $"Me a presentado una novedad en el Metodo: GetCategoria, Error: {ex.Message}";
             }
             return respuesta;
         }

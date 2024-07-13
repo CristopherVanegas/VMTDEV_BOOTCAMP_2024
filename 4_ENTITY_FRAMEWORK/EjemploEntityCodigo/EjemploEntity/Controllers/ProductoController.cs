@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interface;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,6 +10,7 @@ namespace EjemploEntity.Controllers
     public class ProductoController : Controller
     {
         private readonly IProducto _producto; //en el controller se hace la inyeccion con la interface
+        private ControlError Log = new ControlError();
 
         public ProductoController(IProducto producto)
         {
@@ -24,10 +26,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.GetListaProductos(productoID, precio);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("ProductoController", "GetListaProductos", ex.Message);
             }
             return respuesta;
         }
@@ -41,10 +43,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.PostProducto(producto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("ProductoController", "PostProducto", ex.Message);
             }
             return respuesta;
         }
@@ -58,10 +60,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _producto.PutProducto(producto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("ProductoController", "PutProducto", ex.Message);
             }
             return respuesta;
         }

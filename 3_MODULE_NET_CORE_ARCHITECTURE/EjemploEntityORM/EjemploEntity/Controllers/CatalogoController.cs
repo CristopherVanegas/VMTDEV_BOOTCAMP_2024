@@ -1,6 +1,5 @@
-﻿ using EjemploEntity.Interface;
+﻿using EjemploEntity.Interfaces;
 using EjemploEntity.Models;
-using EjemploEntity.Utilitarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,10 +8,9 @@ namespace EjemploEntity.Controllers
     [Route("[controller]")]
     public class CatalogoController : Controller
     {
-		private readonly ICatalogo _catalogo;
-        private ControlError Log = new ControlError();
+        private readonly ICatalogo _catalogo;
 
-		public CatalogoController(ICatalogo catalogo)
+        public CatalogoController(ICatalogo catalogo) 
         {
             this._catalogo = catalogo;
         }
@@ -21,15 +19,15 @@ namespace EjemploEntity.Controllers
         [Route("GetCategoria")]
         public async Task<Respuesta> GetCategoria()
         {
-			var respuesta = new Respuesta();
-			try
-			{
-				respuesta = await _catalogo.GetCategoria();
-			}
-            catch (Exception ex)
+            var respuesta = new Respuesta();
+            try
             {
-                respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoController", "GetCategoria", ex.Message);
+                respuesta = await _catalogo.GetCategoria();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return respuesta;
         }
@@ -43,10 +41,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _catalogo.GetMarca();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoController", "GetMarca", ex.Message);
+
+                throw;
             }
             return respuesta;
         }
@@ -60,10 +58,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _catalogo.GetModelo();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoController", "GetModelo", ex.Message);
+
+                throw;
             }
             return respuesta;
         }
@@ -77,10 +75,10 @@ namespace EjemploEntity.Controllers
             {
                 respuesta = await _catalogo.GetSucursal();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                respuesta.Cod = "999";
-                Log.LogErrorMetodos("CatalogoController", "GetSucursal", ex.Message);
+
+                throw;
             }
             return respuesta;
         }

@@ -2,7 +2,7 @@
 {
     public class ControlError
     {
-        public void LogErrorMetodos(string metodo, string error) 
+        public void LogErrorMetodos(string clase, string metodo, string error) 
         {
 			var ruta = string.Empty;
 			var archivo = string.Empty;
@@ -18,7 +18,7 @@
 				}
 
 				StreamWriter writ = new StreamWriter($"{ruta}\\{archivo}");
-				writ.WriteLine($"Se presento una novedad en el metodo: {metodo}, con el siguiente error: {error}");
+				writ.WriteLine($"Se presento una novedad en la clase: {clase}, en el metodo: {metodo}, con el siguiente error: {error}");
 				writ.Close();
 
             }

@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interface;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitarios;
 using Microsoft.EntityFrameworkCore;
 
 namespace EjemploEntity.Services
@@ -7,8 +8,9 @@ namespace EjemploEntity.Services
     public class ClienteServices : ICliente
     {
 		private readonly VentasContext _context; //se hace la inyeccion con la tabla Ventas
+        private ControlError Log = new ControlError();
 
-		public ClienteServices (VentasContext context)
+        public ClienteServices (VentasContext context)
 		{
 			this._context = context;
 		}
@@ -47,12 +49,12 @@ namespace EjemploEntity.Services
                     respuesta.Mensaje = "OK";
                 }
             }
-			catch (Exception ex)
-			{
+            catch (Exception ex)
+            {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error:  {ex.Message}";
+                Log.LogErrorMetodos("VentaController", "GetVentaCliente", ex.Message);
             }
-			return respuesta;
+            return respuesta;
         }
 
         //public Task<Respuesta> PostCliente(Cliente cliente)

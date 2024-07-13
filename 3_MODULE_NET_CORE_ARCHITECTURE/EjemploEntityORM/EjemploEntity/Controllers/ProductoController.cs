@@ -1,46 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ORM.Interface;
-using ORM.Models;
+﻿using EjemploEntity.DTOs;
+using EjemploEntity.Interfaces;
+using EjemploEntity.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
-namespace ORM.Controllers
+namespace EjemploEntity.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class ProductoController : Controller
     {
-        private readonly IProducto _pproducto;
+        private readonly IProducto _producto;
 
         public ProductoController(IProducto producto)
         {
-            this._pproducto = producto;
+            this._producto = producto;
         }
 
         [HttpGet]
         [Route("GetListaProductos")]
-        public async Task<List<Producto>> GetListaProductos(int productoID)
+        public async Task<Respuesta> GetListaProductos(int productoID, float precio)
         {
-            var respuesta = new List<Producto>();
+            var respuesta = new Respuesta();
             try
             {
-                respuesta = await _pproducto.GetListaProductos(productoID);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return respuesta;
-        }
-
-        [HttpGet]
-        [Route("GetListaProductosPrecio")]
-        public async Task<List<Producto>> GetListaProductosPrecio(double valor)
-        {
-            var respuesta = new List<Producto>();
-            try
-            {
-                respuesta = await _pproducto.GetListaProductosPrecio(valor);
+                respuesta = await _producto.GetListaProductos(productoID, precio);
             }
             catch (Exception)
             {
@@ -58,13 +42,14 @@ namespace ORM.Controllers
             var respuesta = new Respuesta();
             try
             {
-                respuesta = await _pproducto.PostProducto(producto);
+                respuesta = await _producto.PostProducto(producto);
             }
             catch (Exception)
             {
 
                 throw;
             }
+
             return respuesta;
         }
 
@@ -75,7 +60,7 @@ namespace ORM.Controllers
             var respuesta = new Respuesta();
             try
             {
-                respuesta = await _pproducto.PutProducto(producto);
+                respuesta = await _producto.PutProducto(producto);
             }
             catch (Exception)
             {

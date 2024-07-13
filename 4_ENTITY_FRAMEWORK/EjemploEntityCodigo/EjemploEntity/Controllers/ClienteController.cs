@@ -1,5 +1,6 @@
 ﻿using EjemploEntity.Interface;
 using EjemploEntity.Models;
+using EjemploEntity.Utilitarios;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EjemploEntity.Controllers
@@ -9,6 +10,7 @@ namespace EjemploEntity.Controllers
     public class ClienteController : Controller
 	{
 		private readonly ICliente _cliente;
+        private ControlError Log = new ControlError();
 
 		public ClienteController (ICliente cliente)
 		{
@@ -27,12 +29,12 @@ namespace EjemploEntity.Controllers
                 //respuesta.Data = await _cliente.GetListaClientes(clienteId, clienteName, identificacion);
                 //respuesta.Mensaje = "OK";
             }
-            catch (Exception)
-			{
-
-				throw;
-			}
-			return respuesta;
+            catch (Exception ex)
+            {
+                respuesta.Cod = "999";
+                Log.LogErrorMetodos("ClienteController", "GetListaClientes", ex.Message);
+            }
+            return respuesta;
         }
 
         //[HttpPost]

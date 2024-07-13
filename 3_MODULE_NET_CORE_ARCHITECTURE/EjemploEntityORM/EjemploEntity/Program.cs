@@ -1,7 +1,7 @@
+using EjemploEntity.Interfaces;
+using EjemploEntity.Models;
+using EjemploEntity.Services;
 using Microsoft.EntityFrameworkCore;
-using ORM.Interface;
-using ORM.Models;
-using ORM.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,18 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// Relaciona entre el servicio y la interfaz
-builder.Services.AddScoped<IProducto, ProductoService>();
-builder.Services.AddScoped<ICatalogo, CatalogoService>();
+builder.Services.AddScoped<IProducto, ProductoServices>();
+builder.Services.AddScoped<ICatalogo, CatalogoServices>();
 
-builder.Services.AddDbContext<VentasContext>(opciones =>
+builder.Services.AddDbContext<MasterclassContext>(opciones =>
 opciones.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace EjemploEntity.Models;
 
-public partial class Cliente
+public partial class Categorium
 {
-    public double? ClienteId { get; set; }
+    public double? CategId { get; set; }
 
-    public string? ClienteNombre { get; set; }
-
-    public double? Cedula { get; set; }
+    public string? CategNombre { get; set; }
 
     public string? Estado { get; set; }
 

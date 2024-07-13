@@ -3,12 +3,15 @@ using EjemploEntity.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using EjemploEntity.DTOs;
+using EjemploEntity.Utilitarios;
 
 namespace EjemploEntity.Services
 {
     public class ProductoServices : IProducto
     {
         private readonly VentasContext _context;
+        private ControlError Log = new ControlError();
+
         public ProductoServices(VentasContext context) 
         {
             this._context = context;
@@ -28,7 +31,7 @@ namespace EjemploEntity.Services
                                             where p.Estado.Equals("A")
                                             select new ProductoDto
                                             {
-                                                ProductoId = p.ProductoId,
+                                                ProductoId = (int?)p.ProductoId,
                                                 ProductoDescrip = p.ProductoDescrip,
                                                 Estado = p.Estado,
                                                 FechaHoraReg = p.FechaHoraReg,
@@ -57,9 +60,8 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error:  {ex.Message}";
+                Log.LogErrorMetodos("VentaServices", "GetVentaCliente", ex.Message);
             }
-
             return respuesta;
         }
 
@@ -81,8 +83,7 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error:  {ex.Message}";
-                //throw;
+                Log.LogErrorMetodos("VentaServices", "PostProducto", ex.Message);
             }
             return respuesta;
         }
@@ -102,8 +103,7 @@ namespace EjemploEntity.Services
             catch (Exception ex)
             {
                 respuesta.Cod = "999";
-                respuesta.Mensaje = $"Se presento un error: {ex.Message}";
-                //throw;
+                Log.LogErrorMetodos("VentaServices", "PutProducto", ex.Message);
             }
             return respuesta;
         }
