@@ -38,41 +38,58 @@ namespace EjemploEntity.Controllers
         }
 
         [HttpGet]
-        [Route("ChuckNorrisCategories")]
-        public async Task<Respuesta> ChuckNorrisCategories()
+        [Route("CnCategories")]
+        public async Task<Respuesta> CnCategories()
         {
             var respuesta = new Respuesta();
             try
             {
-                var url = _configuration.GetSection("Keys:ChuckNorrisCategoriesApi").Value!;
+                var url = _configuration.GetSection("Keys:CnCategories").Value!;
 
-                respuesta = await chuckNorrisApi.GetChuckNorrisCategoriesApi(url);
+                respuesta = await chuckNorrisApi.CnCategories(url);
             }
             catch (Exception ex)
             {
-                log.LogErrorMetodos("ExtrasController", "ChuckNorrisCategories", ex.Message);
+                log.LogErrorMetodos("ExtrasController", "CnCategories", ex.Message);
+            }
+
+            return respuesta;
+        }
+        
+        [HttpGet]
+        [Route("CnJokes")]
+        public async Task<Respuesta> CnJokes()
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                var url = _configuration.GetSection("Keys:CnRandomJokes").Value!;
+
+                respuesta = await chuckNorrisApi.CnJokes(url);
+            }
+            catch (Exception ex)
+            {
+                log.LogErrorMetodos("ExtrasController", "CnJokes", ex.Message);
             }
 
             return respuesta;
         }
 
-        
         [HttpGet]
-        [Route("GetChuckNorrisJokes")]
-        public async Task<Respuesta> GetChuckNorrisJokes()
+        [Route("CnJokesByCateg")]
+        public async Task<Respuesta> CnJokesByCateg(string category)
         {
             var respuesta = new Respuesta();
             try
             {
-                var url = _configuration.GetSection("Keys:ChuckNorrisJokesApi").Value!;
+                var url = _configuration.GetSection("Keys:CnRandomJokes").Value!;
 
-                respuesta = await chuckNorrisApi.GetChuckNorrisJokesApi(url);
+                respuesta = await chuckNorrisApi.CnJokesByCateg(url, category);
             }
             catch (Exception ex)
             {
-                log.LogErrorMetodos("ExtrasController", "GetChuckNorrisJokes", ex.Message);
+                log.LogErrorMetodos("ExtrasController", "CnJokesByCateg", ex.Message);
             }
-
             return respuesta;
         }
     }
