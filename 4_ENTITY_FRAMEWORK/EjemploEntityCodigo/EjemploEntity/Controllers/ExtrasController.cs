@@ -92,5 +92,23 @@ namespace EjemploEntity.Controllers
             }
             return respuesta;
         }
+        
+        [HttpGet]
+        [Route("CnRandomSearchByQuery")]
+        public async Task<Respuesta> CnRandomSearchByQuery(string query)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                var url = _configuration.GetSection("Keys:CnRandomSearchByQuery").Value!;
+
+                respuesta = await chuckNorrisApi.CnRandomSearchByQuery(url, query);
+            }
+            catch (Exception ex)
+            {
+                log.LogErrorMetodos("ExtrasController", "CnRandomSearchByQuery", ex.Message);
+            }
+            return respuesta;
+        }
     }
 }
