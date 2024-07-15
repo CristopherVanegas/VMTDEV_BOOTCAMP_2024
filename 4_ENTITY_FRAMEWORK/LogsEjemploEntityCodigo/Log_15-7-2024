@@ -1,0 +1,1 @@
+Se presento una novedad en la clase: ChuckNorrisApi, en el metodo: CnRandomSearchByQuery, con el siguiente error: Response status code does not indicate success: 400.
