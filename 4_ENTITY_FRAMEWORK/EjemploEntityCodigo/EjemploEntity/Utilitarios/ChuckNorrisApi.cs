@@ -75,5 +75,28 @@ namespace EjemploEntity.Utilitarios
             }
             return respuesta;
         }
+        
+        public async Task<Respuesta> CnRandomSearchByQuery(string url, string query)
+        {
+            var respuesta = new Respuesta();
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{url}?query={query}");
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+
+                respuesta.Cod = "000";
+                respuesta.Data = JsonConvert.DeserializeObject<CnJokesByQueryDto>(json);
+                respuesta.Mensaje = "Se consumio correcto";
+            }
+            catch (Exception ex)
+            {
+                log.LogErrorMetodos("ChuckNorrisApi", "CnRandomSearchByQuery", ex.Message);
+            }
+            return respuesta;
+        }
     }
 }
