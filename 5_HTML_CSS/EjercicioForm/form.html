@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Formularios</h1>
     <form action="" method="post">
-        
+      <table>
+        <thead>
+          <th colspan="2"><h3>Registro de usuarios</h3></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><label for="idNombre">Nombre:</label></td>
+            <td>
+              <input
+                type="name"
+                placeholder="Ingrese aquí su nombre"
+                name="nombre"
+                id="idNombre"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="idApellido">Apellido:</label></td>
+            <td>
+              <input
+                type="apellido"
+                placeholder="Ingrese aquí su apellido"
+                name="apellido"
+                id="idApellido"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="idEmail">Email:</label></td>
+            <td>
+              <input
+                type="email"
+                placeholder="example@example.com"
+                name="email"
+                id="idEmail"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="idContrasena">Contraseña:</label></td>
+            <td>
+              <input
+                type="password"
+                placeholder="********"
+                name="contrasena"
+                id="idContrasena"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <br />
+            </td>
+          </tr>
+          <tr>
+            <td><input type="submit" value="Registrar Usuario" /></td>
+          </tr>
+        </tbody>
+      </table>
     </form>
-</body>
+  </body>
 </html>
