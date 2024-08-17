@@ -11,14 +11,8 @@ export class AutenticacionComponent {
   pantallaPresentacion: string = 'LOGIN';
 
   toggleAutentication(dataCambio: string) {
-    console.log(dataCambio);
-    console.log(this.pantallaPresentacion);
-
-    if (this.pantallaPresentacion === 'LOGIN') {
-      this.pantallaPresentacion = 'REGISTRO';
-    }
-    else if (this.pantallaPresentacion === 'REGISTRO') {
-      this.pantallaPresentacion = 'LOGIN';
-    }
+    console.log(`Al clickear guardar, dataCambio dispara: ${dataCambio}`);
+    console.log(`En toggleAutentication, autenticacion.component.html renderiza: ${dataCambio}, desde ${this.pantallaPresentacion}`);
+    this.pantallaPresentacion = dataCambio;
   }
 }

@@ -7,12 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class RegistroUsuariosComponent {
   @Output()
-  windowState = new EventEmitter();
+  banderaAutenticacion = new EventEmitter()
 
   eventoRandom () {
 
   }
-  toggleWindowState(): void {
-    this.windowState.emit('CAMBIO');
+  eventoBanderaCambioPantalla() {
+    this.banderaAutenticacion.emit("LOGIN");
   }
 }

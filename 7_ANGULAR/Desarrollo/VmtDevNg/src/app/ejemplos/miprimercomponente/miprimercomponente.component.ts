@@ -18,6 +18,6 @@ export class MiprimercomponenteComponent {
     })
   }
   eventoBanderaCambioPantalla() {
-    this.banderaAutenticacion.emit("CAMBIO");
+    this.banderaAutenticacion.emit("REGISTRO");
   }
 }
