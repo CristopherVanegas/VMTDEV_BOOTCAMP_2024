@@ -1,0 +1,41 @@
+
+<h1>Registro de Usuarios</h1>
+
+<form action="" autocomplete="off">
+  <table>
+    <tr>
+      <td><label for="primerNombre">Primer Nombre:</label></td>
+      <td><input name="primerNombre" type="text" required></td>
+      <td><label for="segundoNombre">Segundo Nombre:</label></td>
+      <td><input name="segundoNombre" type="text" required></td>
+    </tr>
+    <tr>
+      <td><label for="primerApellido">Primer Apellido:</label></td>
+      <td><input name="primerApellido" type="text" required></td>
+      <td><label for="segundoApellido">Segundo Apellido:</label></td>
+      <td><input name="segundoApellido" type="text" required></td>
+    </tr>
+    <tr>
+      <td><label for="dob">Ingrese su fecha de nacimiento:</label></td>
+      <td><input name="dob" type="date" required></td>
+      <td><label for="celular">Celular:</label></td>
+      <td><input name="celular" type="tel" required></td>
+    </tr>
+    <tr>
+      <td><label for="email">Email:</label></td>
+      <td><input name="email" type="email" required></td>
+      <td><label for="emailConf">Confirme su Email:</label></td>
+      <td><input name="emailConf" type="email" required></td>
+    </tr>
+    <tr>
+      <td><label for="password">Ingrese su contraseña:</label></td>
+      <td><input name="password" type="password" required></td>
+      <td><label for="passwordConf">Confirme su contraseña:</label></td>
+      <td><input name="passwordConf" type="password" required></td>
+    </tr>
+  </table>
+  <div>
+    <input (click)="eventoRandom()" class="btn btn-primary" type="button" value="Guardar y enviar">
+    <input (click)="toggleWindowState()" class="btn btn-danger" type="button" value="Cancelar">
+  </div>
+</form>

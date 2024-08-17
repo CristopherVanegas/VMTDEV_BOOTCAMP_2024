@@ -1,7 +1,7 @@
-<div class="d-flex justify-content-center">
-    <form action="">
+<div class="d-flex justify-content-center mt-3">
+    <form action="" autocomplete="off">
         <div>
-            <div class="display-6 ">
+            <div class="display-6">
                 LOGIN
             </div>
             <br>
@@ -12,20 +12,22 @@
                          <label for="emailusuario">Usuario</label>
                      </div>
                      <div>
-                        <input [(ngModel)]="nombreUser" type="email" (ngModelChange)="mostrarNombre()" name="emailusuario" id="emailusuarioid" placeholder="Ingrese su email">
+                        <input class="form-control" [(ngModel)]="nombreUser" type="email" (ngModelChange)="mostrarNombre()" name="emailusuario" id="emailusuarioid" placeholder="Ingrese su email">
                      </div>
                      <div>
                         <label for="contraseniapassword">Contrase&ntilde;a</label>
                      </div>
                      <div>
-                        <input [(ngModel)]="passwordUser" type="password" name="contraseniapassword" id="contraseniapasswordid">
+                        <input class="form-control" [(ngModel)]="passwordUser" type="password" name="contraseniapassword" id="contraseniapasswordid" placeholder="*******">
                      </div>
                  </div>
                  <br>
                  <div class="btn-group">
-                    <div class="bi bi-airplane">
+                    <div class="bi bi-airplane btn btn-primary">
                         <input class=" btn btn-primary" type="button" value="Iniciar sesi&oacute;n" (click)="mostrarNombre()">
                     </div>
+                    <br>
+                    <a href="#" (click)="eventoBanderaCambioPantalla()">Registrarse</a>
                  </div>
             </div>
         </div>
