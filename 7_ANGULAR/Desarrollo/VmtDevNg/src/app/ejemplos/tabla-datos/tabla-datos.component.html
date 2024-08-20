@@ -1,0 +1,54 @@
+<!-- Agrega un dropdown con las ciudades -->
+<div>
+  <h3>Select filled out using *ngFor</h3>
+  <select class="form-select">
+    <option *ngFor="let ciudad of lciudades" [value]="ciudad.idciudad">{{ ciudad.ciudad }}</option>
+  </select>
+</div>
+
+<br><br>
+
+<div>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">Provincia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of lusuarios">
+          <th scope="row">{{ usuario.n }}</th>
+          <td> {{ usuario.nombre }} </td>
+          <td> {{ usuario.edad }} </td>
+          <td> {{ usuario.ciudad }} </td>
+          <td>
+            <!-- <div [ngSwitch]="usuario.n">
+              <ng-template [ngSwitchCase]=1>
+                Guayas
+              </ng-template>
+              <ng-template [ngSwitchCase]=2>
+                Quito
+              </ng-template>
+              <ng-template [ngSwitchCase]=3>
+                Manta
+              </ng-template>
+              <ng-template [ngSwitchCase]=4>
+                Cuenca
+              </ng-template>
+              <ng-template [ngSwitchCase]=5>
+                Portoviejo
+              </ng-template>
+            </div> -->
+
+            <div>
+              {{ getUserProvince(usuario.n) }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
