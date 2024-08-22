@@ -1,0 +1,36 @@
+<br>
+<h1>view-personas works!</h1>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">DoB</th>
+      <th scope="col">Genero</th>
+      <th scope="col">Telf</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">N. Estudio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of dataPersonas">
+      <th  scope="row">{{ persona.id }}</th>
+      <td> {{ persona.nombres }} </td>
+      <td> {{ persona.apellidos }} </td>
+      <td> {{ persona.fecha_nacimiento }} </td>
+      <td> {{ obtenerGenero(persona.genero) }} </td>
+      <td> {{ persona.telefono }} </td>
+      <td> {{ persona.ciudad }} </td>
+      <td [ngSwitch]="persona.nivel_estudios">
+        <ng-template [ngSwitchCase]="'Licenciatura'"><i class="bi bi-person-lines-fill"></i></ng-template>
+        <ng-template [ngSwitchCase]="'Maestría'"><i class="bi bi-book-half"></i></ng-template>
+        <ng-template [ngSwitchCase]="'Doctorado'"><i class="bi bi-capsule"></i></ng-template>
+        <ng-template [ngSwitchCase]="'Ingeniería'"><i class="bi bi-gear-wide-connected"></i></ng-template>
+      </td>
+      <td>
+        <app-boton-dinamico [valueButton]="'Actualizar'" (eventoRegistro)="funcionPersona($event)" [registroPersona]="persona"></app-boton-dinamico>
+      </td>
+  </tbody>
+</table>
